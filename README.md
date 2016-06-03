@@ -1,0 +1,2 @@
+# phgap.splashscreen
+phgap.splashscreen
