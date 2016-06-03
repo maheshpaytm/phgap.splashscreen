@@ -327,7 +327,23 @@
 {
     UIImage* img = _imageView.image;
     CGRect imgBounds = (img) ? CGRectMake(0, 0, img.size.width, img.size.height) : CGRectZero;
+    
+     UIInterfaceOrientation orientation = self.viewController.interfaceOrientation;
 
+
+ switch (orientation)
+ {
+            case UIInterfaceOrientationLandscapeLeft:
+                imgBounds = CGRectMake(0, 0, img.size.height, img.size.width);
+                _imageView.transform = CGAffineTransformMakeRotation(-M_PI/2);
+                break;
+            case UIInterfaceOrientationLandscapeRight:
+                imgBounds = CGRectMake(0, 0, img.size.height, img.size.width);
+                _imageView.transform = CGAffineTransformMakeRotation(M_PI/2);
+                break;
+ }
+    
+    
     CGSize screenSize = [self.viewController.view convertRect:[UIScreen mainScreen].bounds fromView:nil].size;
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     CGAffineTransform imgTransform = CGAffineTransformIdentity;
